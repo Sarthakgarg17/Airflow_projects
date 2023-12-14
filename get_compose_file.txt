@@ -1,0 +1,12 @@
+# to run this file use the following command:
+# source filename
+
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.7.3/docker-compose.yaml'
+mkdir -p ./dags ./logs ./plugins ./config
+
+
+# Initialize the database
+# On all operating systems, you need to run database migrations and create the first user #
+# account. To do this, run.
+
+docker compose up airflow-init

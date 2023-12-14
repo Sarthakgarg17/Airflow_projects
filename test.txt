@@ -1,0 +1,23 @@
+361868647584
+Whiz_User_172125.35999803
+6d095316-fc8a-45ad-a9fb-d093549d4491
+accs key: AKIAVIQINLSQGEIK3AS2
+sec key: QvJl5DXzVolQ7IMkyVooWRXqv5FahtaF8h0M+m7F
+
+
+-e AWS_ACCESS_KEY_ID=AKIA4QCZPRRMVQH37CMB -e AWS_SECRET_ACCESS_KEY=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 -e AWS_DEFAULT_REGION=us-east-1
+
+{
+  "insecure_mode": false,
+  "account": "dp02649",
+  "database": "demo_db",
+  "region": "ap-southeast-1",
+  "warehouse": "test_warehouse",
+  "role": "ACCOUNTADMIN"
+}
+
+{
+  "aws_access_key_id": "AKIAXL2PQWB6ULDHETVP",
+  "aws_secret_access_key": "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",
+  "region_name": "us-east-1"
+}

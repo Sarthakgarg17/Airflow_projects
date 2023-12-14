@@ -1,0 +1,39 @@
+[2023-12-12T07:03:22.598+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.copy_into_command manual__2023-12-12T07:03:14.798196+00:00 [queued]>
+[2023-12-12T07:03:22.603+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.copy_into_command manual__2023-12-12T07:03:14.798196+00:00 [queued]>
+[2023-12-12T07:03:22.603+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-12T07:03:22.608+0000] {taskinstance.py:1382} INFO - Executing <Task(SnowflakeOperator): copy_into_command> on 2023-12-12 07:03:14.798196+00:00
+[2023-12-12T07:03:22.612+0000] {standard_task_runner.py:57} INFO - Started process 633 to run task
+[2023-12-12T07:03:22.614+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'pipeline', 'copy_into_command', 'manual__2023-12-12T07:03:14.798196+00:00', '--job-id', '47', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmpbai7pxds']
+[2023-12-12T07:03:22.616+0000] {standard_task_runner.py:85} INFO - Job 47: Subtask copy_into_command
+[2023-12-12T07:03:22.647+0000] {task_command.py:416} INFO - Running <TaskInstance: pipeline.copy_into_command manual__2023-12-12T07:03:14.798196+00:00 [running]> on host d50382fa2a13
+[2023-12-12T07:03:22.686+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='copy_into_command' AIRFLOW_CTX_EXECUTION_DATE='2023-12-12T07:03:14.798196+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-12T07:03:14.798196+00:00'
+[2023-12-12T07:03:22.687+0000] {sql.py:274} INFO - Executing: COPY INTO organizations (Index,Organization_Id,Name,Website,Country,Description,Founded,Industry,Number_of_employees)
+FROM @my_s3_stage
+FILE_FORMAT = (FORMAT_NAME = my_csv_format)
+ON_ERROR=CONTINUE 
+[2023-12-12T07:03:22.693+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-12T07:03:22.698+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-12T07:03:22.698+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-12T07:03:22.699+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-12T07:03:22.699+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-12T07:03:23.199+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=False]
+[2023-12-12T07:03:23.322+0000] {cursor.py:846} INFO - query execution done
+[2023-12-12T07:03:23.322+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-12T07:03:23.323+0000] {sql.py:418} INFO - Running statement: COPY INTO organizations (Index,Organization_Id,Name,Website,Country,Description,Founded,Industry,Number_of_employees)
+FROM @my_s3_stage
+FILE_FORMAT = (FORMAT_NAME = my_csv_format)
+ON_ERROR=CONTINUE, parameters: None
+[2023-12-12T07:03:23.323+0000] {cursor.py:833} INFO - query: [COPY INTO organizations (Index,Organization_Id,Name,Website,Country,Description,...]
+[2023-12-12T07:03:26.171+0000] {cursor.py:846} INFO - query execution done
+[2023-12-12T07:03:26.172+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-12T07:03:26.172+0000] {sql.py:427} INFO - Rows affected: 1
+[2023-12-12T07:03:26.172+0000] {snowflake.py:400} INFO - Rows affected: 1
+[2023-12-12T07:03:26.173+0000] {snowflake.py:401} INFO - Snowflake query id: 01b0ef07-3200-f5fa-0000-00074442b171
+[2023-12-12T07:03:26.173+0000] {cursor.py:833} INFO - query: [COMMIT]
+[2023-12-12T07:03:26.323+0000] {cursor.py:846} INFO - query execution done
+[2023-12-12T07:03:26.323+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-12T07:03:26.324+0000] {connection.py:677} INFO - closed
+[2023-12-12T07:03:26.389+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-12T07:03:26.480+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=pipeline, task_id=copy_into_command, execution_date=20231212T070314, start_date=20231212T070322, end_date=20231212T070326
+[2023-12-12T07:03:26.497+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-12T07:03:26.509+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

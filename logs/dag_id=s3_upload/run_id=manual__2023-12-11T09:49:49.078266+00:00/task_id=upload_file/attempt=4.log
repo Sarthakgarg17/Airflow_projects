@@ -1,0 +1,60 @@
+[2023-12-11T09:50:09.183+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.upload_file manual__2023-12-11T09:49:49.078266+00:00 [queued]>
+[2023-12-11T09:50:09.192+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.upload_file manual__2023-12-11T09:49:49.078266+00:00 [queued]>
+[2023-12-11T09:50:09.192+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-11T09:50:09.201+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_file> on 2023-12-11 09:49:49.078266+00:00
+[2023-12-11T09:50:09.204+0000] {standard_task_runner.py:57} INFO - Started process 549 to run task
+[2023-12-11T09:50:09.207+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 'upload_file', 'manual__2023-12-11T09:49:49.078266+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmp_g4bzif9']
+[2023-12-11T09:50:09.208+0000] {standard_task_runner.py:85} INFO - Job 22: Subtask upload_file
+[2023-12-11T09:50:09.236+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.upload_file manual__2023-12-11T09:49:49.078266+00:00 [running]> on host 9ddc40d2249c
+[2023-12-11T09:50:09.282+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='upload_file' AIRFLOW_CTX_EXECUTION_DATE='2023-12-11T09:49:49.078266+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-11T09:49:49.078266+00:00'
+[2023-12-11T09:50:09.569+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/s3_upload_dag.py", line 14, in upload_file
+    client.upload_file('/opt/airflow/files/organizations_500000.csv', 'sarthak-aws-bucket-002', 'Organizations-file')
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 348, in _main
+    response = client.create_multipart_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 535, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 963, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 986, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/signers.py", line 189, in sign
+    auth.add_auth(request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+[2023-12-11T09:50:09.575+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_upload, task_id=upload_file, execution_date=20231211T094949, start_date=20231211T095009, end_date=20231211T095009
+[2023-12-11T09:50:09.582+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 22 for task upload_file (Unable to locate credentials; 549)
+[2023-12-11T09:50:09.627+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-11T09:50:09.637+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,55 @@
+[2023-12-14T08:38:54.476+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: restapi-pipeline.create_json_external_stage scheduled__2023-12-13T00:00:00+00:00 [queued]>
+[2023-12-14T08:38:54.480+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: restapi-pipeline.create_json_external_stage scheduled__2023-12-13T00:00:00+00:00 [queued]>
+[2023-12-14T08:38:54.480+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2023-12-14T08:38:54.486+0000] {taskinstance.py:1382} INFO - Executing <Task(SnowflakeOperator): create_json_external_stage> on 2023-12-13 00:00:00+00:00
+[2023-12-14T08:38:54.490+0000] {standard_task_runner.py:57} INFO - Started process 298 to run task
+[2023-12-14T08:38:54.493+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'restapi-pipeline', 'create_json_external_stage', 'scheduled__2023-12-13T00:00:00+00:00', '--job-id', '110', '--raw', '--subdir', 'DAGS_FOLDER/restapi.py', '--cfg-path', '/tmp/tmpj_9mvk7s']
+[2023-12-14T08:38:54.495+0000] {standard_task_runner.py:85} INFO - Job 110: Subtask create_json_external_stage
+[2023-12-14T08:38:54.530+0000] {task_command.py:416} INFO - Running <TaskInstance: restapi-pipeline.create_json_external_stage scheduled__2023-12-13T00:00:00+00:00 [running]> on host b5f695589db2
+[2023-12-14T08:38:54.602+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='restapi-pipeline' AIRFLOW_CTX_TASK_ID='create_json_external_stage' AIRFLOW_CTX_EXECUTION_DATE='2023-12-13T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-13T00:00:00+00:00'
+[2023-12-14T08:38:54.604+0000] {sql.py:274} INFO - Executing: 
+CREATE OR REPLACE STAGE json_s3_stage
+URL='s3://my-random-bucket-002/coin-price-json'
+CREDENTIALS=(AWS_KEY_ID='AKIA4SXCAFHSOCMPU7LX' AWS_SECRET_KEY='DYlOTEHyogLcr0JylaJV8RdHRhCbUw9GFRzT/aEO')
+DIRECTORY = (ENABLE = TRUE)
+FILE_FORMAT = my_json_format;
+[2023-12-14T08:38:54.612+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-14T08:38:54.617+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-14T08:38:54.618+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-14T08:38:54.618+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-14T08:38:54.618+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-14T08:38:55.209+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=False]
+[2023-12-14T08:38:55.312+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T08:38:55.313+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-14T08:38:55.313+0000] {sql.py:418} INFO - Running statement: CREATE OR REPLACE STAGE json_s3_stage
+URL='s3://my-random-bucket-002/coin-price-json'
+CREDENTIALS=(AWS_KEY_ID='AKIA4SXCAFHSOCMPU7LX' AWS_SECRET_KEY='DYlOTEHyogLcr0JylaJV8RdHRhCbUw9GFRzT/aEO')
+DIRECTORY = (ENABLE = TRUE)
+FILE_FORMAT = my_json_format;, parameters: None
+[2023-12-14T08:38:55.314+0000] {cursor.py:833} INFO - query: [CREATE OR REPLACE STAGE json_s3_stage URL='s3://my-random-bucket-002/coin-price-...]
+[2023-12-14T08:38:55.427+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T08:38:55.441+0000] {connection.py:677} INFO - closed
+[2023-12-14T08:38:55.500+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-14T08:38:55.571+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 280, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 388, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 423, in _run_command
+    cur.execute(sql_statement)
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/cursor.py", line 937, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/errors.py", line 345, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 002003 (02000): 01b0faa6-3200-f671-0007-4442000190a6: SQL compilation error:
+File format 'MY_JSON_FORMAT' does not exist or not authorized.
+[2023-12-14T08:38:55.579+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=restapi-pipeline, task_id=create_json_external_stage, execution_date=20231213T000000, start_date=20231214T083854, end_date=20231214T083855
+[2023-12-14T08:38:55.587+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 110 for task create_json_external_stage (002003 (02000): 01b0faa6-3200-f671-0007-4442000190a6: SQL compilation error:
+File format 'MY_JSON_FORMAT' does not exist or not authorized.; 298)
+[2023-12-14T08:38:55.611+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-14T08:38:55.625+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

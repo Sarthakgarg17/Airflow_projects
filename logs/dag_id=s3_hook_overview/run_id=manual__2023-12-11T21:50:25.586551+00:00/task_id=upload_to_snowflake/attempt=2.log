@@ -1,0 +1,13 @@
+[2023-12-11T22:00:45.798+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_hook_overview.upload_to_snowflake manual__2023-12-11T21:50:25.586551+00:00 [queued]>
+[2023-12-11T22:00:45.804+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_hook_overview.upload_to_snowflake manual__2023-12-11T21:50:25.586551+00:00 [queued]>
+[2023-12-11T22:00:45.805+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2023-12-11T22:00:45.810+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_to_snowflake> on 2023-12-11 21:50:25.586551+00:00
+[2023-12-11T22:00:45.817+0000] {standard_task_runner.py:57} INFO - Started process 1950 to run task
+[2023-12-11T22:00:45.822+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_hook_overview', 'upload_to_snowflake', 'manual__2023-12-11T21:50:25.586551+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/load_into_snowflake.py', '--cfg-path', '/tmp/tmpli87bv9t']
+[2023-12-11T22:00:45.826+0000] {standard_task_runner.py:85} INFO - Job 27: Subtask upload_to_snowflake
+[2023-12-11T22:00:45.856+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_hook_overview.upload_to_snowflake manual__2023-12-11T21:50:25.586551+00:00 [running]> on host 7e4ff88a419b
+[2023-12-11T22:00:45.898+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='s3_hook_overview' AIRFLOW_CTX_TASK_ID='upload_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2023-12-11T21:50:25.586551+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-11T21:50:25.586551+00:00'
+[2023-12-11T22:00:45.906+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-11T22:00:45.910+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=s3_hook_overview, task_id=upload_to_snowflake, execution_date=20231211T215025, start_date=20231211T220045, end_date=20231211T220045
+[2023-12-11T22:00:45.956+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-11T22:00:45.965+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

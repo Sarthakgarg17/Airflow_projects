@@ -1,0 +1,17 @@
+[2023-12-11T19:57:07.435+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_hook_overview.download_from_s3 manual__2023-12-11T19:57:06.338532+00:00 [queued]>
+[2023-12-11T19:57:07.439+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_hook_overview.download_from_s3 manual__2023-12-11T19:57:06.338532+00:00 [queued]>
+[2023-12-11T19:57:07.440+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-12-11T19:57:07.446+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): download_from_s3> on 2023-12-11 19:57:06.338532+00:00
+[2023-12-11T19:57:07.452+0000] {standard_task_runner.py:57} INFO - Started process 5249 to run task
+[2023-12-11T19:57:07.455+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_hook_overview', 'download_from_s3', 'manual__2023-12-11T19:57:06.338532+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/load_into_snowflake.py', '--cfg-path', '/tmp/tmpbhclkj38']
+[2023-12-11T19:57:07.458+0000] {standard_task_runner.py:85} INFO - Job 30: Subtask download_from_s3
+[2023-12-11T19:57:07.486+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_hook_overview.download_from_s3 manual__2023-12-11T19:57:06.338532+00:00 [running]> on host a3992be7c3a0
+[2023-12-11T19:57:07.525+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='s3_hook_overview' AIRFLOW_CTX_TASK_ID='download_from_s3' AIRFLOW_CTX_EXECUTION_DATE='2023-12-11T19:57:06.338532+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-11T19:57:06.338532+00:00'
+[2023-12-11T19:57:07.526+0000] {s3.py:1366} INFO - This function shadows the 'download_file' method of S3 API, but it is not the same. If you want to use the original method from S3 API, please call 'S3Hook.get_conn().download_file()'
+[2023-12-11T19:57:07.526+0000] {s3.py:1372} INFO - Downloading source S3 file from Bucket sarthak-aws-bucket-003 with path Organizations-file
+[2023-12-11T19:57:07.531+0000] {base.py:73} INFO - Using connection ID 'aws_default' for task execution.
+[2023-12-11T19:57:07.532+0000] {connection_wrapper.py:381} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from extra.
+[2023-12-11T19:57:26.472+0000] {python.py:194} INFO - Done. Returned value was: /tmp/***_tmp_wjjgvubo
+[2023-12-11T19:57:26.513+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=s3_hook_overview, task_id=download_from_s3, execution_date=20231211T195706, start_date=20231211T195707, end_date=20231211T195726
+[2023-12-11T19:57:26.562+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-11T19:57:26.575+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

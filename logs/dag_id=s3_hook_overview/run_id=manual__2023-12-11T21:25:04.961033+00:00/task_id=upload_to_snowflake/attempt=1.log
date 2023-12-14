@@ -1,0 +1,36 @@
+[2023-12-11T21:25:28.005+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_hook_overview.upload_to_snowflake manual__2023-12-11T21:25:04.961033+00:00 [queued]>
+[2023-12-11T21:25:28.010+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_hook_overview.upload_to_snowflake manual__2023-12-11T21:25:04.961033+00:00 [queued]>
+[2023-12-11T21:25:28.010+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-12-11T21:25:28.018+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_to_snowflake> on 2023-12-11 21:25:04.961033+00:00
+[2023-12-11T21:25:28.022+0000] {standard_task_runner.py:57} INFO - Started process 653 to run task
+[2023-12-11T21:25:28.025+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_hook_overview', 'upload_to_snowflake', 'manual__2023-12-11T21:25:04.961033+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/load_into_snowflake.py', '--cfg-path', '/tmp/tmp3uk3jjee']
+[2023-12-11T21:25:28.028+0000] {standard_task_runner.py:85} INFO - Job 10: Subtask upload_to_snowflake
+[2023-12-11T21:25:28.061+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_hook_overview.upload_to_snowflake manual__2023-12-11T21:25:04.961033+00:00 [running]> on host 7e4ff88a419b
+[2023-12-11T21:25:28.101+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='s3_hook_overview' AIRFLOW_CTX_TASK_ID='upload_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2023-12-11T21:25:04.961033+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-11T21:25:04.961033+00:00'
+[2023-12-11T21:25:28.114+0000] {copy_into_snowflake.py:139} INFO - Executing COPY command...
+[2023-12-11T21:25:28.117+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-11T21:25:28.118+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-11T21:25:28.118+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-11T21:25:28.118+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-11T21:25:29.206+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=True]
+[2023-12-11T21:25:29.319+0000] {cursor.py:846} INFO - query execution done
+[2023-12-11T21:25:29.320+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-11T21:25:29.320+0000] {sql.py:418} INFO - Running statement: COPY INTO my_schema.organizations
+             FROM  @my_s3_stage/
+        
+        PATTERN='.*[.]csv'
+        FILE_FORMAT=my_csv_format
+        on_error=continue, parameters: None
+[2023-12-11T21:25:29.321+0000] {cursor.py:833} INFO - query: [COPY INTO my_schema.organizations FROM  @my_s3_stage/  PATTERN='.*[.]csv' FILE_F...]
+[2023-12-11T21:25:33.002+0000] {cursor.py:846} INFO - query execution done
+[2023-12-11T21:25:33.003+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-11T21:25:33.004+0000] {sql.py:427} INFO - Rows affected: 1
+[2023-12-11T21:25:33.004+0000] {snowflake.py:400} INFO - Rows affected: 1
+[2023-12-11T21:25:33.004+0000] {snowflake.py:401} INFO - Snowflake query id: 01b0ecc5-3200-f5e3-0000-00074442a015
+[2023-12-11T21:25:33.005+0000] {connection.py:677} INFO - closed
+[2023-12-11T21:25:33.066+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-11T21:25:33.136+0000] {copy_into_snowflake.py:141} INFO - COPY command completed
+[2023-12-11T21:25:33.137+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-11T21:25:33.148+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=s3_hook_overview, task_id=upload_to_snowflake, execution_date=20231211T212504, start_date=20231211T212528, end_date=20231211T212533
+[2023-12-11T21:25:33.190+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-11T21:25:33.199+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

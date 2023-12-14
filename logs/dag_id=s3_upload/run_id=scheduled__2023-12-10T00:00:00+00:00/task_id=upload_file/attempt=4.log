@@ -1,0 +1,220 @@
+[2023-12-11T01:05:02.699+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T01:05:02.703+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T01:05:02.703+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-11T01:05:02.710+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_file> on 2023-12-10 00:00:00+00:00
+[2023-12-11T01:05:02.716+0000] {standard_task_runner.py:57} INFO - Started process 1054 to run task
+[2023-12-11T01:05:02.722+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 'upload_file', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmpt252nvoy']
+[2023-12-11T01:05:02.727+0000] {standard_task_runner.py:85} INFO - Job 18: Subtask upload_file
+[2023-12-11T01:05:02.770+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [running]> on host 524aa457b57f
+[2023-12-11T01:05:02.863+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='upload_file' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T01:05:05.239+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/s3_upload_dag.py", line 14, in upload_file
+    client.upload_file('/Users/sarthakgarg/Downloads/organizations-500000.csv', 'my-bucket-sarthak-002', 'Organizations-file')
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 269, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 591, in _submit
+    upload_input_manager.provide_transfer_size(transfer_future)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 244, in provide_transfer_size
+    self._osutil.get_file_size(transfer_future.meta.call_args.fileobj)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/utils.py", line 247, in get_file_size
+    return os.path.getsize(filename)
+  File "/usr/local/lib/python3.8/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/sarthakgarg/Downloads/organizations-500000.csv'
+[2023-12-11T01:05:05.249+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_upload, task_id=upload_file, execution_date=20231210T000000, start_date=20231211T010502, end_date=20231211T010505
+[2023-12-11T01:05:05.255+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 18 for task upload_file ([Errno 2] No such file or directory: '/Users/sarthakgarg/Downloads/organizations-500000.csv'; 1054)
+[2023-12-11T01:05:05.284+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-11T01:05:05.303+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-11T04:15:45.235+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T04:15:45.239+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T04:15:45.240+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-11T04:15:45.247+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_file> on 2023-12-10 00:00:00+00:00
+[2023-12-11T04:15:45.250+0000] {standard_task_runner.py:57} INFO - Started process 251 to run task
+[2023-12-11T04:15:45.253+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 'upload_file', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmpxyysuyq8']
+[2023-12-11T04:15:45.258+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask upload_file
+[2023-12-11T04:15:45.305+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [running]> on host 900665ffa878
+[2023-12-11T04:15:45.345+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='upload_file' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T04:15:45.579+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/s3_upload_dag.py", line 14, in upload_file
+    client.upload_file('/opt/airflow/downloads/organizations-500000.csv', 'my-bucket-sarthak-002', 'Organizations-file')
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 348, in _main
+    response = client.create_multipart_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 535, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 963, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 986, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/signers.py", line 189, in sign
+    auth.add_auth(request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+[2023-12-11T04:15:45.585+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_upload, task_id=upload_file, execution_date=20231210T000000, start_date=20231211T041545, end_date=20231211T041545
+[2023-12-11T04:15:45.591+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 9 for task upload_file (Unable to locate credentials; 251)
+[2023-12-11T04:15:45.631+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-11T04:15:45.644+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-11T08:45:22.344+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T08:45:22.348+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T08:45:22.348+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-11T08:45:22.354+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_file> on 2023-12-10 00:00:00+00:00
+[2023-12-11T08:45:22.357+0000] {standard_task_runner.py:57} INFO - Started process 211 to run task
+[2023-12-11T08:45:22.359+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 'upload_file', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmp6nt7adm5']
+[2023-12-11T08:45:22.361+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask upload_file
+[2023-12-11T08:45:22.387+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [running]> on host d2ff3e8f0ec4
+[2023-12-11T08:45:22.425+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='upload_file' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T08:45:22.560+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/s3_upload_dag.py", line 14, in upload_file
+    client.upload_file('~/files/organizations-500000.csv', 'my-bucket-sarthak-002', 'Organizations-file')
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 269, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 591, in _submit
+    upload_input_manager.provide_transfer_size(transfer_future)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 244, in provide_transfer_size
+    self._osutil.get_file_size(transfer_future.meta.call_args.fileobj)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/utils.py", line 247, in get_file_size
+    return os.path.getsize(filename)
+  File "/usr/local/lib/python3.8/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: '~/files/organizations-500000.csv'
+[2023-12-11T08:45:22.566+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_upload, task_id=upload_file, execution_date=20231210T000000, start_date=20231211T084522, end_date=20231211T084522
+[2023-12-11T08:45:22.571+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 9 for task upload_file ([Errno 2] No such file or directory: '~/files/organizations-500000.csv'; 211)
+[2023-12-11T08:45:22.617+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-11T08:45:22.626+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-11T09:34:28.343+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T09:34:28.348+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T09:34:28.349+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-11T09:34:28.358+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_file> on 2023-12-10 00:00:00+00:00
+[2023-12-11T09:34:28.363+0000] {standard_task_runner.py:57} INFO - Started process 205 to run task
+[2023-12-11T09:34:28.367+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 'upload_file', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmp187pwaa8']
+[2023-12-11T09:34:28.370+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask upload_file
+[2023-12-11T09:34:28.406+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [running]> on host 926eb853a40f
+[2023-12-11T09:34:28.448+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='upload_file' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T09:34:28.621+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/s3_upload_dag.py", line 14, in upload_file
+    client.upload_file('opt/airflow/files/organizations_500000.csv', 'sarthak-aws-bucket-002', 'Organizations-file')
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 269, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 591, in _submit
+    upload_input_manager.provide_transfer_size(transfer_future)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 244, in provide_transfer_size
+    self._osutil.get_file_size(transfer_future.meta.call_args.fileobj)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/utils.py", line 247, in get_file_size
+    return os.path.getsize(filename)
+  File "/usr/local/lib/python3.8/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: 'opt/airflow/files/organizations_500000.csv'
+[2023-12-11T09:34:28.627+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_upload, task_id=upload_file, execution_date=20231210T000000, start_date=20231211T093428, end_date=20231211T093428
+[2023-12-11T09:34:28.634+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 9 for task upload_file ([Errno 2] No such file or directory: 'opt/airflow/files/organizations_500000.csv'; 205)
+[2023-12-11T09:34:28.664+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-11T09:34:28.673+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-11T09:38:27.734+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T09:38:27.739+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T09:38:27.739+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-12-11T09:38:27.746+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_file> on 2023-12-10 00:00:00+00:00
+[2023-12-11T09:38:27.748+0000] {standard_task_runner.py:57} INFO - Started process 204 to run task
+[2023-12-11T09:38:27.751+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 'upload_file', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmp5lx3iz17']
+[2023-12-11T09:38:27.753+0000] {standard_task_runner.py:85} INFO - Job 9: Subtask upload_file
+[2023-12-11T09:38:27.780+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.upload_file scheduled__2023-12-10T00:00:00+00:00 [running]> on host 9ddc40d2249c
+[2023-12-11T09:38:27.816+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='upload_file' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T09:38:27.977+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/s3_upload_dag.py", line 14, in upload_file
+    client.upload_file('opt/airflow/files/organizations_500000.csv', 'sarthak-aws-bucket-002', 'Organizations-file')
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/inject.py", line 143, in upload_file
+    return transfer.upload_file(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/tasks.py", line 269, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 591, in _submit
+    upload_input_manager.provide_transfer_size(transfer_future)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/upload.py", line 244, in provide_transfer_size
+    self._osutil.get_file_size(transfer_future.meta.call_args.fileobj)
+  File "/home/airflow/.local/lib/python3.8/site-packages/s3transfer/utils.py", line 247, in get_file_size
+    return os.path.getsize(filename)
+  File "/usr/local/lib/python3.8/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: 'opt/airflow/files/organizations_500000.csv'
+[2023-12-11T09:38:27.986+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_upload, task_id=upload_file, execution_date=20231210T000000, start_date=20231211T093827, end_date=20231211T093827
+[2023-12-11T09:38:27.993+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 9 for task upload_file ([Errno 2] No such file or directory: 'opt/airflow/files/organizations_500000.csv'; 204)
+[2023-12-11T09:38:28.005+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-11T09:38:28.022+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,41 @@
+[2023-12-14T09:31:47.125+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: restapi-pipeline.copy_into_csv_table manual__2023-12-14T09:31:32.548191+00:00 [queued]>
+[2023-12-14T09:31:47.130+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: restapi-pipeline.copy_into_csv_table manual__2023-12-14T09:31:32.548191+00:00 [queued]>
+[2023-12-14T09:31:47.131+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-14T09:31:47.137+0000] {taskinstance.py:1382} INFO - Executing <Task(SnowflakeOperator): copy_into_csv_table> on 2023-12-14 09:31:32.548191+00:00
+[2023-12-14T09:31:47.142+0000] {standard_task_runner.py:57} INFO - Started process 2907 to run task
+[2023-12-14T09:31:47.145+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'restapi-pipeline', 'copy_into_csv_table', 'manual__2023-12-14T09:31:32.548191+00:00', '--job-id', '160', '--raw', '--subdir', 'DAGS_FOLDER/restapi.py', '--cfg-path', '/tmp/tmpro7w1va5']
+[2023-12-14T09:31:47.148+0000] {standard_task_runner.py:85} INFO - Job 160: Subtask copy_into_csv_table
+[2023-12-14T09:31:47.179+0000] {task_command.py:416} INFO - Running <TaskInstance: restapi-pipeline.copy_into_csv_table manual__2023-12-14T09:31:32.548191+00:00 [running]> on host b5f695589db2
+[2023-12-14T09:31:47.237+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='restapi-pipeline' AIRFLOW_CTX_TASK_ID='copy_into_csv_table' AIRFLOW_CTX_EXECUTION_DATE='2023-12-14T09:31:32.548191+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-14T09:31:32.548191+00:00'
+[2023-12-14T09:31:47.238+0000] {sql.py:274} INFO - Executing: COPY INTO coin_price_csv (uuid,symbol,name ,color ,iconUrl ,marketCap,price ,
+listedAt ,tier ,change ,ranking ,sparkline,lowVolume ,coinrankingUrl ,dayVolume ,btcPrice )
+FROM @csv_s3_stage
+FILE_FORMAT = (FORMAT_NAME = my_csv_format)
+ON_ERROR=CONTINUE 
+[2023-12-14T09:31:47.245+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-14T09:31:47.251+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-14T09:31:47.252+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-14T09:31:47.253+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-14T09:31:47.253+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-14T09:31:47.681+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=False]
+[2023-12-14T09:31:47.785+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T09:31:47.786+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-14T09:31:47.786+0000] {sql.py:418} INFO - Running statement: COPY INTO coin_price_csv (uuid,symbol,name ,color ,iconUrl ,marketCap,price ,
+listedAt ,tier ,change ,ranking ,sparkline,lowVolume ,coinrankingUrl ,dayVolume ,btcPrice )
+FROM @csv_s3_stage
+FILE_FORMAT = (FORMAT_NAME = my_csv_format)
+ON_ERROR=CONTINUE, parameters: None
+[2023-12-14T09:31:47.787+0000] {cursor.py:833} INFO - query: [COPY INTO coin_price_csv (uuid,symbol,name ,color ,iconUrl ,marketCap,price , li...]
+[2023-12-14T09:31:51.611+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T09:31:51.613+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-14T09:31:51.614+0000] {sql.py:427} INFO - Rows affected: 1
+[2023-12-14T09:31:51.615+0000] {snowflake.py:400} INFO - Rows affected: 1
+[2023-12-14T09:31:51.616+0000] {snowflake.py:401} INFO - Snowflake query id: 01b0fadb-3200-f6b5-0007-444200018196
+[2023-12-14T09:31:51.617+0000] {cursor.py:833} INFO - query: [COMMIT]
+[2023-12-14T09:31:51.854+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T09:31:51.855+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-14T09:31:51.856+0000] {connection.py:677} INFO - closed
+[2023-12-14T09:31:51.925+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-14T09:31:52.040+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=restapi-pipeline, task_id=copy_into_csv_table, execution_date=20231214T093132, start_date=20231214T093147, end_date=20231214T093152
+[2023-12-14T09:31:52.079+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-14T09:31:52.091+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

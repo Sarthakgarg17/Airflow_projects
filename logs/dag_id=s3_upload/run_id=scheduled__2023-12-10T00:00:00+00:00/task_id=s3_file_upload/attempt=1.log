@@ -1,0 +1,42 @@
+[2023-12-11T17:23:22.050+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T17:23:22.057+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T17:23:22.057+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-12-11T17:23:22.068+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): s3_file_upload> on 2023-12-10 00:00:00+00:00
+[2023-12-11T17:23:22.073+0000] {standard_task_runner.py:57} INFO - Started process 194 to run task
+[2023-12-11T17:23:22.087+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 's3_file_upload', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmpt706a1i2']
+[2023-12-11T17:23:22.104+0000] {standard_task_runner.py:85} INFO - Job 3: Subtask s3_file_upload
+[2023-12-11T17:23:22.229+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [running]> on host a3992be7c3a0
+[2023-12-11T17:23:22.326+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='s3_file_upload' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T17:23:56.959+0000] {logging_mixin.py:154} INFO - upload completed
+[2023-12-11T17:23:56.964+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-11T17:23:56.987+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=s3_upload, task_id=s3_file_upload, execution_date=20231210T000000, start_date=20231211T172322, end_date=20231211T172356
+[2023-12-11T17:23:57.043+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-11T17:23:57.057+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-11T21:24:23.804+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T21:24:23.810+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-11T21:24:23.810+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-12-11T21:24:23.818+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): s3_file_upload> on 2023-12-10 00:00:00+00:00
+[2023-12-11T21:24:23.822+0000] {standard_task_runner.py:57} INFO - Started process 576 to run task
+[2023-12-11T21:24:23.826+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 's3_file_upload', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmpnq1lh55k']
+[2023-12-11T21:24:23.829+0000] {standard_task_runner.py:85} INFO - Job 7: Subtask s3_file_upload
+[2023-12-11T21:24:23.858+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [running]> on host 7e4ff88a419b
+[2023-12-11T21:24:23.903+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='s3_file_upload' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-11T21:24:52.687+0000] {logging_mixin.py:154} INFO - upload completed
+[2023-12-11T21:24:52.691+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-11T21:24:52.725+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=s3_upload, task_id=s3_file_upload, execution_date=20231210T000000, start_date=20231211T212423, end_date=20231211T212452
+[2023-12-11T21:24:52.775+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-11T21:24:52.788+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-12T06:29:38.106+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-12T06:29:38.112+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [queued]>
+[2023-12-12T06:29:38.112+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-12-12T06:29:38.120+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): s3_file_upload> on 2023-12-10 00:00:00+00:00
+[2023-12-12T06:29:38.124+0000] {standard_task_runner.py:57} INFO - Started process 394 to run task
+[2023-12-12T06:29:38.128+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_upload', 's3_file_upload', 'scheduled__2023-12-10T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/s3_upload_dag.py', '--cfg-path', '/tmp/tmpr3cliskd']
+[2023-12-12T06:29:38.131+0000] {standard_task_runner.py:85} INFO - Job 3: Subtask s3_file_upload
+[2023-12-12T06:29:38.162+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_upload.s3_file_upload scheduled__2023-12-10T00:00:00+00:00 [running]> on host 5a4938192ef0
+[2023-12-12T06:29:38.209+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='s3_upload' AIRFLOW_CTX_TASK_ID='s3_file_upload' AIRFLOW_CTX_EXECUTION_DATE='2023-12-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-10T00:00:00+00:00'
+[2023-12-12T06:29:39.971+0000] {logging_mixin.py:154} INFO - upload completed
+[2023-12-12T06:29:39.973+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-12T06:29:39.989+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=s3_upload, task_id=s3_file_upload, execution_date=20231210T000000, start_date=20231212T062938, end_date=20231212T062939
+[2023-12-12T06:29:40.048+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-12T06:29:40.074+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

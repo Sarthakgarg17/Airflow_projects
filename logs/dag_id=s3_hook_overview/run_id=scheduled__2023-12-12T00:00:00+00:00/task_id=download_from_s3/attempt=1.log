@@ -1,0 +1,59 @@
+[2023-12-13T00:05:33.240+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: s3_hook_overview.download_from_s3 scheduled__2023-12-12T00:00:00+00:00 [queued]>
+[2023-12-13T00:05:33.246+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: s3_hook_overview.download_from_s3 scheduled__2023-12-12T00:00:00+00:00 [queued]>
+[2023-12-13T00:05:33.246+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-12-13T00:05:33.254+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): download_from_s3> on 2023-12-12 00:00:00+00:00
+[2023-12-13T00:05:33.258+0000] {standard_task_runner.py:57} INFO - Started process 11358 to run task
+[2023-12-13T00:05:33.262+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 's3_hook_overview', 'download_from_s3', 'scheduled__2023-12-12T00:00:00+00:00', '--job-id', '58', '--raw', '--subdir', 'DAGS_FOLDER/load_into_snowflake.py', '--cfg-path', '/tmp/tmpxz598bmb']
+[2023-12-13T00:05:33.266+0000] {standard_task_runner.py:85} INFO - Job 58: Subtask download_from_s3
+[2023-12-13T00:05:33.298+0000] {task_command.py:416} INFO - Running <TaskInstance: s3_hook_overview.download_from_s3 scheduled__2023-12-12T00:00:00+00:00 [running]> on host d50382fa2a13
+[2023-12-13T00:05:33.344+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='s3_hook_overview' AIRFLOW_CTX_TASK_ID='download_from_s3' AIRFLOW_CTX_EXECUTION_DATE='2023-12-12T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-12T00:00:00+00:00'
+[2023-12-13T00:05:33.345+0000] {s3.py:1366} INFO - This function shadows the 'download_file' method of S3 API, but it is not the same. If you want to use the original method from S3 API, please call 'S3Hook.get_conn().download_file()'
+[2023-12-13T00:05:33.345+0000] {s3.py:1372} INFO - Downloading source S3 file from Bucket sarthak-aws-bucket-004 with path Organizations-file
+[2023-12-13T00:05:33.351+0000] {base.py:73} INFO - Using connection ID 'awd_default' for task execution.
+[2023-12-13T00:05:33.351+0000] {connection_wrapper.py:381} INFO - AWS Connection (conn_id='awd_default', conn_type='aws') credentials retrieved from extra.
+[2023-12-13T00:05:38.295+0000] {local_task_job_runner.py:274} WARNING - Recorded pid 11367 does not match the current pid 11358
+[2023-12-13T00:05:38.299+0000] {process_utils.py:131} INFO - Sending 15 to group 11358. PIDs of all processes in the group: [11358]
+[2023-12-13T00:05:38.300+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 11358
+[2023-12-13T00:05:38.300+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-12-13T00:05:38.311+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/load_into_snowflake.py", line 23, in download_from_s3
+    file_name = hook.download_file(key=s3_key, bucket_name=s3_bucket)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 135, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 89, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1375, in download_file
+    s3_obj = self.get_key(key, bucket_name)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 135, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 89, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 932, in get_key
+    obj.load(**sanitize_extra_args())
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/resources/factory.py", line 564, in do_action
+    response = action(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/resources/action.py", line 88, in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 535, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 963, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 986, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 202, in _send_request
+    while self._needs_retry(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 373, in _needs_retry
+    time.sleep(handler_response)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1634, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-12-13T00:05:38.317+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=s3_hook_overview, task_id=download_from_s3, execution_date=20231212T000000, start_date=20231213T000537, end_date=20231213T000538
+[2023-12-13T00:05:38.325+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 58 for task download_from_s3 (Task received SIGTERM signal; 11358)
+[2023-12-13T00:05:38.354+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=11358, status='terminated', exitcode=1, started='00:05:32') (11358) terminated with exit code 1

@@ -1,0 +1,41 @@
+[2023-12-14T11:50:41.797+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: restapi-pipeline.variant_table_to_multicolumn manual__2023-12-14T11:50:19.460445+00:00 [queued]>
+[2023-12-14T11:50:41.802+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: restapi-pipeline.variant_table_to_multicolumn manual__2023-12-14T11:50:19.460445+00:00 [queued]>
+[2023-12-14T11:50:41.803+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-14T11:50:41.809+0000] {taskinstance.py:1382} INFO - Executing <Task(SnowflakeOperator): variant_table_to_multicolumn> on 2023-12-14 11:50:19.460445+00:00
+[2023-12-14T11:50:41.812+0000] {standard_task_runner.py:57} INFO - Started process 7941 to run task
+[2023-12-14T11:50:41.816+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'restapi-pipeline', 'variant_table_to_multicolumn', 'manual__2023-12-14T11:50:19.460445+00:00', '--job-id', '179', '--raw', '--subdir', 'DAGS_FOLDER/restapi.py', '--cfg-path', '/tmp/tmpy0kwv__s']
+[2023-12-14T11:50:41.818+0000] {standard_task_runner.py:85} INFO - Job 179: Subtask variant_table_to_multicolumn
+[2023-12-14T11:50:41.852+0000] {task_command.py:416} INFO - Running <TaskInstance: restapi-pipeline.variant_table_to_multicolumn manual__2023-12-14T11:50:19.460445+00:00 [running]> on host b5f695589db2
+[2023-12-14T11:50:41.900+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='restapi-pipeline' AIRFLOW_CTX_TASK_ID='variant_table_to_multicolumn' AIRFLOW_CTX_EXECUTION_DATE='2023-12-14T11:50:19.460445+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-14T11:50:19.460445+00:00'
+[2023-12-14T11:50:41.901+0000] {sql.py:274} INFO - Executing: 
+insert into coin_price_json(uuid,symbol,name ,color ,iconUrl ,marketCap,price ,
+listedAt ,tier ,change ,ranking ,sparkline,lowVolume ,coinrankingUrl ,dayVolume ,btcPrice )
+select my_variant_column:uuid,my_variant_column:symbol,my_variant_column:name ,my_variant_column:color ,my_variant_column:iconUrl ,my_variant_column:marketCap,my_variant_column:price ,
+my_variant_column:listedAt ,my_variant_column:tier ,my_variant_column:change ,my_variant_column:ranking ,my_variant_column:sparkline,my_variant_column:lowVolume ,my_variant_column:coinrankingUrl ,my_variant_column:dayVolume ,my_variant_column:btcPrice 
+from coin_price_json_variant;
+[2023-12-14T11:50:41.908+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-14T11:50:41.914+0000] {base.py:73} INFO - Using connection ID 'snowflake_default' for task execution.
+[2023-12-14T11:50:41.915+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-14T11:50:41.916+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-14T11:50:41.916+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-14T11:50:42.373+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=False]
+[2023-12-14T11:50:42.473+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T11:50:42.473+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-14T11:50:42.473+0000] {sql.py:418} INFO - Running statement: insert into coin_price_json(uuid,symbol,name ,color ,iconUrl ,marketCap,price ,
+listedAt ,tier ,change ,ranking ,sparkline,lowVolume ,coinrankingUrl ,dayVolume ,btcPrice )
+select my_variant_column:uuid,my_variant_column:symbol,my_variant_column:name ,my_variant_column:color ,my_variant_column:iconUrl ,my_variant_column:marketCap,my_variant_column:price ,
+my_variant_column:listedAt ,my_variant_column:tier ,my_variant_column:change ,my_variant_column:ranking ,my_variant_column:sparkline,my_variant_column:lowVolume ,my_variant_column:coinrankingUrl ,my_variant_column:dayVolume ,my_variant_column:btcPrice 
+from coin_price_json_variant;, parameters: None
+[2023-12-14T11:50:42.473+0000] {cursor.py:833} INFO - query: [insert into coin_price_json(uuid,symbol,name ,color ,iconUrl ,marketCap,price , ...]
+[2023-12-14T11:50:42.933+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T11:50:42.934+0000] {sql.py:427} INFO - Rows affected: 500
+[2023-12-14T11:50:42.935+0000] {snowflake.py:400} INFO - Rows affected: 500
+[2023-12-14T11:50:42.935+0000] {snowflake.py:401} INFO - Snowflake query id: 01b0fb66-3200-f6a0-0007-44420001c1f6
+[2023-12-14T11:50:42.935+0000] {cursor.py:833} INFO - query: [COMMIT]
+[2023-12-14T11:50:43.165+0000] {cursor.py:846} INFO - query execution done
+[2023-12-14T11:50:43.166+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-14T11:50:43.166+0000] {connection.py:677} INFO - closed
+[2023-12-14T11:50:43.226+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-14T11:50:43.326+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=restapi-pipeline, task_id=variant_table_to_multicolumn, execution_date=20231214T115019, start_date=20231214T115041, end_date=20231214T115043
+[2023-12-14T11:50:43.368+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-14T11:50:43.378+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
