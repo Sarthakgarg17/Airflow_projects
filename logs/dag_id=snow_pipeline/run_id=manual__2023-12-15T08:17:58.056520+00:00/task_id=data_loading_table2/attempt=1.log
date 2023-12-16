@@ -1,0 +1,37 @@
+[2023-12-15T08:18:02.289+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: snow_pipeline.data_loading_table2 manual__2023-12-15T08:17:58.056520+00:00 [queued]>
+[2023-12-15T08:18:02.293+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: snow_pipeline.data_loading_table2 manual__2023-12-15T08:17:58.056520+00:00 [queued]>
+[2023-12-15T08:18:02.294+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-15T08:18:02.300+0000] {taskinstance.py:1382} INFO - Executing <Task(SnowflakeOperator): data_loading_table2> on 2023-12-15 08:17:58.056520+00:00
+[2023-12-15T08:18:02.303+0000] {standard_task_runner.py:57} INFO - Started process 1040 to run task
+[2023-12-15T08:18:02.313+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'snow_pipeline', 'data_loading_table2', 'manual__2023-12-15T08:17:58.056520+00:00', '--job-id', '222', '--raw', '--subdir', 'DAGS_FOLDER/snowflake_dag.py', '--cfg-path', '/tmp/tmpkxvna9sn']
+[2023-12-15T08:18:02.330+0000] {standard_task_runner.py:85} INFO - Job 222: Subtask data_loading_table2
+[2023-12-15T08:18:02.387+0000] {task_command.py:416} INFO - Running <TaskInstance: snow_pipeline.data_loading_table2 manual__2023-12-15T08:17:58.056520+00:00 [running]> on host e65e9d73b232
+[2023-12-15T08:18:02.461+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='snow_pipeline' AIRFLOW_CTX_TASK_ID='data_loading_table2' AIRFLOW_CTX_EXECUTION_DATE='2023-12-15T08:17:58.056520+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-15T08:17:58.056520+00:00'
+[2023-12-15T08:18:02.464+0000] {sql.py:274} INFO - Executing: 
+insert into DEMO_DB2.DEMO_SCHEMA.webpage_sales(webpage_sk,orderno,qty,net_profit)
+select WS_WEB_PAGE_SK,WS_ORDER_NUMBER,WS_QUANTITY,WS_NET_PROFIT from SNOWFLAKE_SAMPLE_DATA.TPCDS_SF100TCL.WEB_SALES
+limit 50000;
+[2023-12-15T08:18:02.473+0000] {base.py:73} INFO - Using connection ID 'snowflake_2' for task execution.
+[2023-12-15T08:18:02.481+0000] {base.py:73} INFO - Using connection ID 'snowflake_2' for task execution.
+[2023-12-15T08:18:02.482+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-15T08:18:02.484+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-15T08:18:02.484+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-15T08:18:03.013+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=False]
+[2023-12-15T08:18:03.117+0000] {cursor.py:846} INFO - query execution done
+[2023-12-15T08:18:03.118+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-15T08:18:03.119+0000] {sql.py:418} INFO - Running statement: insert into DEMO_DB2.DEMO_SCHEMA.webpage_sales(webpage_sk,orderno,qty,net_profit)
+select WS_WEB_PAGE_SK,WS_ORDER_NUMBER,WS_QUANTITY,WS_NET_PROFIT from SNOWFLAKE_SAMPLE_DATA.TPCDS_SF100TCL.WEB_SALES
+limit 50000;, parameters: None
+[2023-12-15T08:18:03.119+0000] {cursor.py:833} INFO - query: [insert into DEMO_DB2.DEMO_SCHEMA.webpage_sales(webpage_sk,orderno,qty,net_profit...]
+[2023-12-15T08:18:08.407+0000] {cursor.py:846} INFO - query execution done
+[2023-12-15T08:18:08.411+0000] {sql.py:427} INFO - Rows affected: 50000
+[2023-12-15T08:18:08.412+0000] {snowflake.py:400} INFO - Rows affected: 50000
+[2023-12-15T08:18:08.413+0000] {snowflake.py:401} INFO - Snowflake query id: 01b10032-3200-f715-0007-4442000233ea
+[2023-12-15T08:18:08.413+0000] {cursor.py:833} INFO - query: [COMMIT]
+[2023-12-15T08:18:08.643+0000] {cursor.py:846} INFO - query execution done
+[2023-12-15T08:18:08.644+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-15T08:18:08.644+0000] {connection.py:677} INFO - closed
+[2023-12-15T08:18:08.711+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-15T08:18:08.844+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=snow_pipeline, task_id=data_loading_table2, execution_date=20231215T081758, start_date=20231215T081802, end_date=20231215T081808
+[2023-12-15T08:18:08.893+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-15T08:18:08.911+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

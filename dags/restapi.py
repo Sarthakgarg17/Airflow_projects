@@ -45,6 +45,7 @@ def json_to_csv():
 
 def upload_file_csv():
     client=boto3.client("s3",aws_access_key_id=aws_access_key_id,aws_secret_access_key=aws_secret_access_key)
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     client.upload_file('/opt/airflow/files/test.csv', 'my-random-bucket-002', 'coin-price-csv')
     print("csv upload completed")
 

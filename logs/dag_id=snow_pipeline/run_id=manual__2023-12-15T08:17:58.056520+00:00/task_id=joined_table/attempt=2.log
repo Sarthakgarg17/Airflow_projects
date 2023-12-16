@@ -1,0 +1,53 @@
+[2023-12-15T08:18:22.615+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: snow_pipeline.joined_table manual__2023-12-15T08:17:58.056520+00:00 [queued]>
+[2023-12-15T08:18:22.619+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: snow_pipeline.joined_table manual__2023-12-15T08:17:58.056520+00:00 [queued]>
+[2023-12-15T08:18:22.619+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2023-12-15T08:18:22.625+0000] {taskinstance.py:1382} INFO - Executing <Task(SnowflakeOperator): joined_table> on 2023-12-15 08:17:58.056520+00:00
+[2023-12-15T08:18:22.630+0000] {standard_task_runner.py:57} INFO - Started process 1077 to run task
+[2023-12-15T08:18:22.633+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'snow_pipeline', 'joined_table', 'manual__2023-12-15T08:17:58.056520+00:00', '--job-id', '224', '--raw', '--subdir', 'DAGS_FOLDER/snowflake_dag.py', '--cfg-path', '/tmp/tmpthzayxa_']
+[2023-12-15T08:18:22.636+0000] {standard_task_runner.py:85} INFO - Job 224: Subtask joined_table
+[2023-12-15T08:18:22.742+0000] {task_command.py:416} INFO - Running <TaskInstance: snow_pipeline.joined_table manual__2023-12-15T08:17:58.056520+00:00 [running]> on host e65e9d73b232
+[2023-12-15T08:18:22.817+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sarthak' AIRFLOW_CTX_DAG_ID='snow_pipeline' AIRFLOW_CTX_TASK_ID='joined_table' AIRFLOW_CTX_EXECUTION_DATE='2023-12-15T08:17:58.056520+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-15T08:17:58.056520+00:00'
+[2023-12-15T08:18:22.819+0000] {sql.py:274} INFO - Executing: 
+create or replace table webpage_total
+select * from webpage wp
+left join webpage_sales wps
+on wp.webpage_sk=wps.webpage_sk;
+[2023-12-15T08:18:22.829+0000] {base.py:73} INFO - Using connection ID 'snowflake_2' for task execution.
+[2023-12-15T08:18:22.837+0000] {base.py:73} INFO - Using connection ID 'snowflake_2' for task execution.
+[2023-12-15T08:18:22.837+0000] {connection.py:334} INFO - Snowflake Connector for Python Version: 3.3.1, Python Version: 3.8.18, Platform: Linux-6.5.11-linuxkit-aarch64-with-glibc2.17
+[2023-12-15T08:18:22.838+0000] {connection.py:1103} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2023-12-15T08:18:22.838+0000] {connection.py:1121} INFO - Setting use_openssl_only mode to False
+[2023-12-15T08:18:23.582+0000] {cursor.py:833} INFO - query: [ALTER SESSION SET autocommit=False]
+[2023-12-15T08:18:23.691+0000] {cursor.py:846} INFO - query execution done
+[2023-12-15T08:18:23.697+0000] {cursor.py:988} INFO - Number of results in first chunk: 1
+[2023-12-15T08:18:23.697+0000] {sql.py:418} INFO - Running statement: create or replace table webpage_total
+select * from webpage wp
+left join webpage_sales wps
+on wp.webpage_sk=wps.webpage_sk;, parameters: None
+[2023-12-15T08:18:23.698+0000] {cursor.py:833} INFO - query: [create or replace table webpage_total select * from webpage wp left join webpage...]
+[2023-12-15T08:18:23.811+0000] {cursor.py:846} INFO - query execution done
+[2023-12-15T08:18:23.818+0000] {connection.py:677} INFO - closed
+[2023-12-15T08:18:23.884+0000] {connection.py:683} INFO - No async queries seem to be running, deleting session
+[2023-12-15T08:18:23.961+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 280, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/snowflake/hooks/snowflake.py", line 388, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 423, in _run_command
+    cur.execute(sql_statement)
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/cursor.py", line 937, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/errors.py", line 345, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 001003 (42000): 01b10032-3200-f715-0007-4442000233fe: SQL compilation error:
+syntax error line 2 at position 0 unexpected 'select'.
+[2023-12-15T08:18:23.976+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=snow_pipeline, task_id=joined_table, execution_date=20231215T081758, start_date=20231215T081822, end_date=20231215T081823
+[2023-12-15T08:18:23.990+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 224 for task joined_table (001003 (42000): 01b10032-3200-f715-0007-4442000233fe: SQL compilation error:
+syntax error line 2 at position 0 unexpected 'select'.; 1077)
+[2023-12-15T08:18:24.021+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-15T08:18:24.035+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

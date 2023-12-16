@@ -1,19 +1,23 @@
 import requests,pprint,json
+from datetime import datetime as dt 
+import pytz
+import pprint
 
-url = "https://coinranking1.p.rapidapi.com/coins"
+# url = "https://coinranking1.p.rapidapi.com/coins"
 
-querystring = {"referenceCurrencyUuid":"yhjMzLPhuIDl","timePeriod":"24h","tiers[0]":"1","orderBy":"marketCap","orderDirection":"desc","limit":"500","offset":"0"}
+# querystring = {"referenceCurrencyUuid":"yhjMzLPhuIDl","timePeriod":"24h","tiers[0]":"1","orderBy":"marketCap","orderDirection":"desc","limit":"500","offset":"0"}
 
-headers = {
-	"X-RapidAPI-Key": "cd8cd7d41emsh4ba0432bad96d8dp186666jsn22cf5af893bf",
-	"X-RapidAPI-Host": "coinranking1.p.rapidapi.com"
-}
+# headers = {
+# 	"X-RapidAPI-Key": "cd8cd7d41emsh4ba0432bad96d8dp186666jsn22cf5af893bf",
+# 	"X-RapidAPI-Host": "coinranking1.p.rapidapi.com"
+# }
 
-response = requests.get(url, headers=headers, params=querystring)
+# response = requests.get(url, headers=headers, params=querystring)
 
-with open("/Users/sarthakgarg/Desktop/Airflow_projects/raw_data/test.json",'w') as json_file:
-    json.dump(response.json()["data"]["coins"],json_file)
+# with open("/Users/sarthakgarg/Desktop/Airflow_projects/raw_data/test.json",'w') as json_file:
+#     json.dump(response.json()["data"]["coins"],json_file)
 
+pprint.pprint(dt.now(pytz.timezone('Asia/Kolkata')))
 
 
 
